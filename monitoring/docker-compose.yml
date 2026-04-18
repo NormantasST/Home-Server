@@ -1,0 +1,10 @@
+services:
+  grafana:
+    image: docker.io/grafana/grafana:latest
+    user: "472:472"
+    ports:
+      - "0.0.0.0:${GRAFANA_PORT}:3000"
+    volumes:
+      - /opt/dockerfiles/grafana:/var/lib/grafana
+    restart: unless-stopped
+
