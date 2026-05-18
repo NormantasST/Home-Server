@@ -7,10 +7,10 @@ Server is only accesible through LAN. IP: 192.168.1.99.
 ## Service Information
 
 |Service|Port|Description
-|---|---|
-|`SearXNG`|8666|Search Engine aggregator. Replacement for Google. |
-|`Grafana`|8667|Allows to monitor Server + Services.|
-|`ssh`| |Allows to connect to server via personal PC. |
+|---|---|---|
+|`SearXNG`| 8666|Search Engine aggregator. Replacement for Google. |
+|`Grafana`| 8667|Allows to monitor Server + Services.|
+|`ssh`| | Allows to connect to server via personal PC. |
 
 ## Useful Commands
 
