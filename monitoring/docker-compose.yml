@@ -1,5 +1,7 @@
+version: '3.8'
+
 services:
-  grafana:
+  grafana: # View Prometheus Data.
     image: docker.io/grafana/grafana:latest
     user: "472:472"
     ports:
@@ -7,4 +9,34 @@ services:
     volumes:
       - /opt/dockerfiles/grafana:/var/lib/grafana
     restart: unless-stopped
-
+  node-exporter: # Collects Linux Data.
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    restart: unless-stopped
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    ports:
+      - 9100:9100
+  prometheus:
+    image: prom/prometheus:latest
+    user: "473:473"
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - /opt/dockerfiles/prometheus:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    ports:
+      - "0.0.0.0:${PROMETHEUS_PORT}:9090"
