@@ -11,8 +11,8 @@ Server is only accesible through LAN. IP: 192.168.1.99.
 |`SearXNG`| 8666|Search Engine aggregator. Replacement for Google. |
 |`ssh`| | Allows to connect to server via personal PC. |
 |`Grafana`| 8667|Allows to monitor Server + Services.|
-|`Node_Exporter`| | Exports Data to Prometheus about server usage. |
-|`Prometheus`| | Stores data of services later to be read by Grafana. |
+|`Node Exporter`| 9100 | Exports Data to Prometheus about server usage. |
+|`Prometheus`| 9090 | Stores data of services later to be read by Grafana. |
 
 ## Useful Commands
 
