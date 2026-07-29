@@ -20,18 +20,30 @@ services:
         source: ${JELLYFIN_FONTS_SOURCE}
         target: /fonts
     restart: 'unless-stopped'
-  seerr: # Meant to Discover Services
+  seerr: # Meant to discover media + request media
     image: seerr/seerr
     user: "${USER_ID}:${USER_ID}"
     init: true
     container_name: seerr
     environment:
       - LOG_LEVEL=debug
-      - TZ=Europe/Vilnius
+      - TZ=${TIMEZONE}
     ports:
-      - 5055:5055
+      - 0.0.0.0:5055:5055
     volumes:
       - type: bind
         source: ${SEERR_CONFIG_SOURCE}
         target: /app/config
+    restart: 'unless-stopped'
+  radarr: # Meant to process MOVIE media requests
+    image: lscr.io/linuxserver/radarr
+    container_name: radarr
+    user: "${USER_ID}:${USER_ID}"
+    environment:
+      - TZ=${TIMEZONE}
+    ports:
+      - 7878:7878
+    volumes:
+      - ${RADARR_CONFIG_SOURCE}:/config
+      - ${JELLYFIN_MEDIA_SOURCE}:/data
     restart: 'unless-stopped'

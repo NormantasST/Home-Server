@@ -19,6 +19,8 @@ Servers are only accesible through LAN.
 |`Prometheus`| 9090 | Stores data of services later to be read by Grafana. |
 |`Jellyfin` | 8067/tcp; 7359/udp | Private TV Media player |
 |`Seerr` | 5055 | Media discovery & requests |
+|`Radarr` | 7878 | Automates Movie Request Handling |
+
 
 ## Useful Commands
 
