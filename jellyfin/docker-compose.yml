@@ -1,5 +1,5 @@
 services:
-  jellyfin:
+  jellyfin: # Media Manager
     image: jellyfin/jellyfin
     container_name: jellyfin
     user: "${USER_ID}:${USER_ID}"
@@ -8,15 +8,30 @@ services:
       - 0.0.0.0:7359:7359/udp
     volumes:
       - type: bind
-        source: ${CONFIG_SOURCE}
+        source: ${JELLYFIN_CONFIG_SOURCE}
         target: /config
       - type: bind
-        source: ${CACHE_SOURCE}
+        source: ${JELLYFIN_CACHE_SOURCE}
         target: /cache
       - type: bind
-        source: ${MEDIA_SOURCE}
+        source: ${JELLYFIN_MEDIA_SOURCE}
         target: /media
       - type: bind
-        source: ${FONTS_SOURCE}
+        source: ${JELLYFIN_FONTS_SOURCE}
         target: /fonts
+    restart: 'unless-stopped'
+  seerr: # Meant to Discover Services
+    image: seerr/seerr
+    user: "${USER_ID}:${USER_ID}"
+    init: true
+    container_name: seerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=Europe/Vilnius
+    ports:
+      - 5055:5055
+    volumes:
+      - type: bind
+        source: ${SEERR_CONFIG_SOURCE}
+        target: /app/config
     restart: 'unless-stopped'
