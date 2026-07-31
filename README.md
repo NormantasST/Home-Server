@@ -20,11 +20,8 @@ Servers are only accesible through LAN.
 |`Node Exporter`| 9100 | Exports Data to Prometheus about server usage. |
 |`Prometheus`| 9090 | Stores data of services later to be read by Grafana. |
 |`Jellyfin` | 8067/tcp; 7359/udp | Private TV Media player |
-|`Seerr` | 5055 | Media discovery & requests |
-|`Radarr` | 7878 | Automates Movie Request Handling |
-| `Jellyfin Downloads Client (qBitTorrent)` | 6880 (WUI); 6881 (Torrent Protocol) | Downloads client meant for Jellyfin ecosystem |
 
-## Useful Commands
+Useful Commands
 
 |Command|Description|
 |---|---|
