@@ -1,6 +1,8 @@
 # Home-Server
 Configs for Home Server as Backups
 
+> Disclaimer!: I do not use all these services. I configured them to learn more about Linux Servers & Docker.
+
 ## Basic Information
 Servers are only accesible through LAN.
 |Name|IP|
@@ -20,7 +22,7 @@ Servers are only accesible through LAN.
 |`Jellyfin` | 8067/tcp; 7359/udp | Private TV Media player |
 |`Seerr` | 5055 | Media discovery & requests |
 |`Radarr` | 7878 | Automates Movie Request Handling |
-
+| `Jellyfin Downloads Client (qBitTorrent)` | 6880 (WUI); 6881 (Torrent Protocol) | Downloads client meant for Jellyfin ecosystem |
 
 ## Useful Commands
 

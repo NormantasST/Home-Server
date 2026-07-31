@@ -28,6 +28,8 @@ services:
     environment:
       - LOG_LEVEL=debug
       - TZ=${TIMEZONE}
+      - WEBUI_PORT=6880
+      - TORRENTING_PORT=6881
     ports:
       - 0.0.0.0:5055:5055
     volumes:
@@ -46,4 +48,22 @@ services:
     volumes:
       - ${RADARR_CONFIG_SOURCE}:/config
       - ${JELLYFIN_MEDIA_SOURCE}:/data
+    restart: 'unless-stopped'
+  qbittorrent: # Downloads Client
+    image: lscr.io/linuxserver/qbittorrent
+    container_name: jellyfin-download-client-qbittorrent
+    user: "${USER_UD}:${USER_ID}"
+    environment:
+      - PUID=${USER_ID}
+      - PGUID=${USER_ID}
+      - TZ=${TIMEZONE}
+      - WEBUI_PORT=6880
+      - TORRENTING_PORT=6881
+    ports:
+      - 0.0.0.0:6880:6880 # WEB UI
+      - 0.0.0.0:6881:6881 # Torrent Protocol Ports
+      - 0.0.0.0:6881:6881/udp
+    volumes:
+      - ${JELLYFIN_MEDIA_SOURCE}:/downlaods
+      - ${QBITTORRENT_CONFIG_SOURCE}:/config
     restart: 'unless-stopped'

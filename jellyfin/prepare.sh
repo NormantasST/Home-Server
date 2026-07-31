@@ -31,6 +31,7 @@ generate_directory $JELLYFIN_CACHE_SOURCE
 generate_directory $JELLYFIN_MEDIA_SOURCE
 generate_directory $SEERR_CONFIG_SOURCE
 generate_directory $RADARR_CONFIG_SOURCE
+generate_directory $QBITTORRENT_CONFIG_SOURCE
 
 echo "-------------------"
 echo "Finished Preparation"
