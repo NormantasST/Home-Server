@@ -1,7 +1,7 @@
 # Home-Server
 Configs for Home Server as Backups
 
-> Disclaimer!: I do not use all these services. I configured them to learn more about Linux Servers & Docker.
+> Disclaimer!: I do not use all these services. I configured some of them to learn more about Linux Servers & Docker.
 
 ## Basic Information
 Servers are only accesible through LAN.
