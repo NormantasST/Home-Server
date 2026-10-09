@@ -1,0 +1,15 @@
+services:
+  homepage: # Homepage (Quick menu for URLS)
+    image: ghcr.io/gethomepage/homepage
+    container_name: homepage
+    user: "${USER_ID}:${USER_ID}"
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: localhost,127.0.0.1,192.168.1.100
+      PUID: ${USER_ID}
+      PGID: ${USER_ID}
+      PORT: 80
+    ports:
+      - 0.0.0.0:80:80
+    volumes:
+      - ${HOMEPAGE_CONFIG_SOURCE}:/app/config
+    restart: 'unless-stopped'
