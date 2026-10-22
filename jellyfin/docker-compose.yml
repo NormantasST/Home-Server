@@ -19,6 +19,9 @@ services:
       - type: bind
         source: ${JELLYFIN_FONTS_SOURCE}
         target: /fonts
+    devices:
+      - /dev/dri:/dev/dri
     group_add:
-      - "937"
+      - "993"
+      - "44"
     restart: 'unless-stopped'
